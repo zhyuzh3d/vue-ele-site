@@ -90,7 +90,7 @@
 
 .el-badge__content{
     background-color: #ed135b;
-    border-radius: 10px;
+    border-radius: 0;
     color: #fff;
     display: inline-block;
     font-size: 12px;

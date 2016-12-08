@@ -1,42 +1,3 @@
-.el-row:before, .el-row:after {
-    display: table;
-    content: "";
-}
-.el-row:after {
-    clear: both;
-}
-.el-dragger__cover:after {
-    display: inline-block;
-    content: "";
-    height: 100%;
-    vertical-align: middle;
-}
-.el-menu:before, .el-menu:after {
-    display: table;
-    content: "";
-}
-.el-menu:after {
-    clear: both;
-}
-.el-progress-bar__inner:after {
-    display: inline-block;
-    content: "";
-    height: 100%;
-    vertical-align: middle;
-}
-.el-progress-bar__inner:after {
-    display: inline-block;
-    content: "";
-    height: 100%;
-    vertical-align: middle;
-}
-.el-tabs__header:before, .el-tabs__header:after {
-    display: table;
-    content: "";
-}
-.el-tabs__header:after {
-    clear: both;
-}
 .el-form-item__content:before, .el-form-item__content:after {
     display: table;
     content: "";
@@ -63,13 +24,6 @@
     content: "";
     height: 100%;
     vertical-align: middle;
-}
-.el-slider:before, .el-slider:after {
-    display: table;
-    content: "";
-}
-.el-slider:after {
-    clear: both;
 }
 .el-button-group:before, .el-button-group:after {
     display: table;
@@ -1758,7 +1712,7 @@
     line-height: 22px;
     font-size: 12px;
     color: #fff;
-    border-radius: 4px;
+    border-radius: 0;
     border: 1px solid #8492a6;
 }
 .el-tag .el-icon-close {
@@ -3189,12 +3143,19 @@
   --------------------------*/
 }
 .el-slider {}
+.el-slider:before, .el-slider:after {
+    display: table;
+    content: "";
+}
+.el-slider:after {
+    clear: both;
+}
 .el-slider__runway {
     width: 100%;
     height: 4px;
     margin: 16px 0;
     background-color: #e5e9f2;
-    border-radius: 3px;
+    border-radius: 0;
     position: relative;
     cursor: pointer;
     vertical-align: middle;
@@ -3233,8 +3194,8 @@
 .el-slider__bar {
     height: 4px;
     background-color: #1cbbb4;
-    border-top-left-radius: 3px;
-    border-bottom-left-radius: 3px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
     position: absolute;
 }
 .el-slider__button-wrapper {
@@ -3917,7 +3878,7 @@
     height: 22px;
     border: 1px solid #C0CCDA;
     outline: none;
-    border-radius: 12px;
+    border-radius: 0px;
     box-sizing: border-box;
     background: #C0CCDA;
     cursor: pointer;
@@ -4531,6 +4492,9 @@
     padding: 0 10px;
     margin: 0;
     cursor: pointer;
+    font-size: 14px;
+    color: #444;
+    text-align: center
 }
 .el-dropdown-menu__item:not(.is-disabled):hover {
     background-color: #e5e9f2;
@@ -5186,7 +5150,7 @@
     line-height: 22px;
     font-size: 12px;
     color: #fff;
-    border-radius: 4px;
+    border-radius: 0;
     border: 1px solid #8492a6;
 }
 .el-tag .el-icon-close {
@@ -5946,7 +5910,7 @@
     line-height: 22px;
     font-size: 12px;
     color: #fff;
-    border-radius: 4px;
+    border-radius: 0;
     border: 1px solid #8492a6;
 }
 .el-tag .el-icon-close {
@@ -6765,7 +6729,7 @@
     line-height: 22px;
     font-size: 12px;
     color: #fff;
-    border-radius: 4px;
+    border-radius: 0;
     border: 1px solid #8492a6;
 }
 .el-tag .el-icon-close {
@@ -7300,11 +7264,11 @@
     font-size: 12px;
 }
 .el-pagination .btn-prev {
-    border-radius: 2px 0 0 2px;
+    border-radius: 0 0 0 0;
     border-right: 0;
 }
 .el-pagination .btn-next {
-    border-radius: 0 2px 2px 0;
+    border-radius: 0 0 0 0;
     border-left: 0;
 }
 .el-pagination--small .btn-prev, .el-pagination--small .btn-next, .el-pagination--small .el-pager li, .el-pagination--small .el-pager li:last-child {
@@ -7318,7 +7282,7 @@
     visibility: hidden;
 }
 .el-pagination--small .el-pager li {
-    border-radius: 2px;
+    border-radius: 0;
 }
 .el-pagination__sizes {
     margin: 0 10px 0 0;
@@ -7341,7 +7305,7 @@
 }
 .el-pagination__editor {
     border: 1px solid #D3DCE6;
-    border-radius: 2px;
+    border-radius: 0;
     line-height: 18px;
     padding: 4px 2px;
     width: 30px;
@@ -9237,7 +9201,7 @@
     vertical-align: middle;
     background-color: #fff;
     width: 420px;
-    border-radius: 3px;
+    border-radius: 0px;
     font-size: 16px;
     -webkit-user-select: none;
     overflow: hidden;
@@ -12809,7 +12773,7 @@
     line-height: 22px;
     font-size: 12px;
     color: #fff;
-    border-radius: 4px;
+    border-radius: 0;
     border: 1px solid #8492a6;
 }
 .el-tag .el-icon-close {
@@ -13235,6 +13199,13 @@
     position: relative;
     margin: 0 0 15px;
 }
+.el-tabs__header:before, .el-tabs__header:after {
+    display: table;
+    content: "";
+}
+.el-tabs__header:after {
+    clear: both;
+}
 .el-tabs__active-bar {
     position: absolute;
     bottom: 0;
@@ -13591,6 +13562,18 @@
     border-radius: 100px;
     line-height: 1;
 }
+.el-progress-bar__inner:after {
+    display: inline-block;
+    content: "";
+    height: 100%;
+    vertical-align: middle;
+}
+.el-progress-bar__inner:after {
+    display: inline-block;
+    content: "";
+    height: 100%;
+    vertical-align: middle;
+}
 .el-progress-bar__innerText {
     display: inline-block;
     vertical-align: middle;
@@ -13872,18 +13855,25 @@
     white-space: nowrap;
 }
 .el-menu {
-    border-radius: 2px;
+    border-radius: 0;
     list-style: none;
     position: relative;
     margin: 0;
     padding-left: 0;
     background-color: #eff2f7;
 }
+.el-menu:before, .el-menu:after {
+    display: table;
+    content: "";
+}
+.el-menu:after {
+    clear: both;
+}
 .el-menu li {
     list-style: none;
 }
 .el-menu--dark {
-    background-color: #324057;
+    background-color: #003f4e;
 }
 .el-menu--dark .el-menu-item, .el-menu--dark .el-submenu__title {
     color: #c0ccda;
@@ -13895,7 +13885,7 @@
     background-color: #1f2f3d;
 }
 .el-menu--dark .el-submenu .el-menu .el-menu-item:hover {
-    background-color: #475669;
+    background-color: #003f4e;
 }
 .el-menu--horizontal {}
 .el-menu--horizontal .el-menu-item {
@@ -14425,6 +14415,12 @@
     z-index: 10;
     cursor: default;
 }
+.el-dragger__cover:after {
+    display: inline-block;
+    content: "";
+    height: 100%;
+    vertical-align: middle;
+}
 .el-dragger__cover img {
     display: block;
     width: 100%;
@@ -14605,6 +14601,13 @@
 .el-row {
     position: relative;
     box-sizing: border-box;
+}
+.el-row:before, .el-row:after {
+    display: table;
+    content: "";
+}
+.el-row:after {
+    clear: both;
 }
 .el-row--flex {
     display: -ms-flexbox;
@@ -16285,7 +16288,7 @@
 }
 .el-badge__content {
     background-color: #ed135b;
-    border-radius: 10px;
+    border-radius: 0;
     color: #fff;
     display: inline-block;
     font-size: 12px;
@@ -16397,7 +16400,7 @@
 }
 .el-card {
     border: 1px solid #D3DCE6;
-    border-radius: 4px;
+    border-radius: 0;
     background-color: #fff;
     overflow: hidden;
     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, .12),

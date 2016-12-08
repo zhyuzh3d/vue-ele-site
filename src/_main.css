@@ -1,0 +1,12 @@
+body {
+    font-family: Arial, "Hiragino Sans GB", "冬青黑", "Microsoft YaHei", "微软雅黑", SimSun, Helvetica, Tahoma, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+p {
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+}
+div {
+    font-size: 14px;
+}

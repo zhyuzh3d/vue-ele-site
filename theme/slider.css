@@ -743,7 +743,7 @@
     height: 4px;
     margin: 16px 0;
     background-color: #e5e9f2;
-    border-radius: 3px;
+    border-radius: 0;
     position: relative;
     cursor: pointer;
     vertical-align: middle;
@@ -794,8 +794,8 @@
 .el-slider__bar{
     height: 4px;
     background-color: #1cbbb4;
-    border-top-left-radius: 3px;
-    border-bottom-left-radius: 3px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
     position: absolute;
 }
 

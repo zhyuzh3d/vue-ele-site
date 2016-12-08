@@ -186,7 +186,7 @@
   /* Message Box
   -------------------------- */
   --msgbox-width: 420px;
-  --msgbox-border-radius: 3px;
+  --msgbox-border-radius: 0px;
   --msgbox-font-size: 16px;
   --msgbox-content-font-size: 14px;
   --msgbox-content-color: var(--link-color);
@@ -379,7 +379,7 @@
   --switch-disabled-text-color: #F9FAFC;
 
   --switch-font-size: var(--font-size-base);
-  --switch-core-border-radius: 12px;
+  --switch-core-border-radius: 0px;
   --switch-width: 46px;
   --switch-height: 22px;
   --switch-button-size: 16px;
@@ -408,7 +408,7 @@
   --pagination-font-size: 13px;
   --pagination-fill: var(--color-white);
   --pagination-color: var(--link-color);
-  --pagination-border-radius: 2px;
+  --pagination-border-radius: 0;
   --pagination-button-color: #99a9bf;
   --pagination-button-size: 28px;
   --pagination-button-disabled-color: #e4e4e4;
@@ -444,7 +444,7 @@
   --tag-color: var(--color-white);
   --tag-close-color: #666;
   --tag-font-size: 12px;
-  --tag-border-radius: 4px;
+  --tag-border-radius: 0;
 
   --tag-gray-fill: #e5e9f2;
   --tag-gray-border: #e5e9f2;
@@ -475,7 +475,7 @@
   /* Badge
   -------------------------- */
   --badge-fill: var(--color-danger);
-  --badge-radius: 10px;
+  --badge-radius: 0;
   --badge-font-size: 12px;
   --badge-padding: 6px;
   --badge-size: 18px;
@@ -483,7 +483,7 @@
   /* Card
   --------------------------*/
   --card-border-color: var(--disabled-border-base);
-  --card-border-radius: 4px;
+  --card-border-radius: 0;
   --card-padding: 20px;
 
   /* Slider
@@ -495,7 +495,7 @@
   --slider-disable-color: var(--color-grey);
 
   --slider-margin: 16px 0;
-  --slider-border-radius: 3px;
+  --slider-border-radius: 0;
   --slider-height: 4px;
   --slider-button-size: 12px;
   --slider-button-wrapper-size: 36px;
@@ -504,7 +504,7 @@
   /* Steps
   --------------------------*/
   --steps-border-color: var(--disabled-border-base);
-  --steps-border-radius: 4px;
+  --steps-border-radius: 0;
   --steps-padding: 20px;
 
   /* Steps

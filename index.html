@@ -11,7 +11,16 @@
 
 <body>
     <div id="app"></div>
-    <script src="dist/build.js"></script>
+    <script>
+        var sdom = document.createElement("script");
+        var url = "//" + window.location.host + '/dist/build.js';
+        if (window.location.search == '?dev') {
+            url = "//localhost:8080/dist/build.js";
+        };
+        sdom.setAttribute("src", url)
+        document.body.appendChild(sdom);
+
+    </script>
 </body>
 
 </html>
