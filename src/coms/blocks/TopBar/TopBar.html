@@ -1,7 +1,7 @@
 <script src="./TopBar.js"></script>
 <template>
     <div id='topBar'>
-        <el-menu theme="dark" default-active="1" class="el-menu fixed" mode="horizontal" @select="handleSelect" v-bind:style='{"background-color":bgColor}'>
+        <el-menu theme="dark" default-active="1" class="el-menu fixed flexbox" mode="horizontal" @select="handleSelect" v-bind:style='{"background-color":bgColor}'>
             <el-menu-item index="xmgc" v-bind:class='(bgColor=="inherit")?"wt":""'>
                 <a v-bind:href="conf.urls.www">
                     <img v-if='bgColor=="inherit"' src='//editor.xmgc360.com/imgs/xmgc80bai.png' width="80px" style="margin-top:20px">
@@ -17,7 +17,7 @@
                     <div style="display:inline-block;vertical-align:top;">杰米诺课堂</div>
                 </a>
             </el-menu-item>
-
+            <el-menu-item index="null" style='flex-grow:1;padding:0'></el-menu-item>
 
             <el-menu-item index="login" class='rf' v-if='!myProfile.name' v-bind:class='(bgColor=="inherit")?"wt":""'>
                 <a v-bind:href="conf.urls.loginPage">登录</a>
@@ -29,11 +29,11 @@
 
 
             <el-menu-item index="profile" class='rf' v-if='myProfile.name'>
-                <el-dropdown v-bind:class='(bgColor=="inherit")?"wt":""' trigger='click'>
+                <el-dropdown v-bind:class='(bgColor=="inherit")?"wt":"light"' trigger='click'>
                     <div class="el-dropdown-link">
                         <div class="disib">
                             <img class='avatar' v-bind:src="myProfile.thum?myProfile.thum:'http://www.xmgc360.com/_imgs/thumtemp.jpg'" width="32px" style='margin-top:12px'>
-                            <div class='disib'>{{myProfile.name}}</div>
+                            <div class='disib uname'>{{myProfile.name}}</div>
                         </div>
                         <i class="el-icon-caret-bottom el-icon--right"></i>
                     </div>
@@ -58,12 +58,20 @@
         width: 100%;
     }
 
+    .flexbox {
+        display: flex
+    }
+
     .rf {
         float: right
     }
 
     .wt {
         color: white
+    }
+
+     .light {
+        color: rgb(192, 204, 218);
     }
 
     .avatar {
@@ -78,6 +86,13 @@
     a {
         color: inherit;
         text-decoration: none
+    }
+
+    .uname{
+        max-width: 150px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
     }
 
 </style>

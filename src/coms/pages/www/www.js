@@ -1,4 +1,4 @@
-import temp from '../../blocks/temp/temp.html';
+import temp from '../../blocks/Temp/Temp.html';
 
 var com = {};
 com.data = function data() {

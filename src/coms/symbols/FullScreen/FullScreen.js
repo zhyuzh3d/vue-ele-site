@@ -62,6 +62,10 @@ function resizeImg() {
     var imgRatio = imgWid / imgHei;
     var scrRatio = window.innerWidth / window.innerHeight;
 
+    var clrjo=jo.find('#clrBg');
+    clrjo.css('height', window.innerHeight + 'px');
+    clrjo.css('width', window.innerWidth + 'px');
+
     if (imgRatio > scrRatio) {
         //高度充满
         imgjo.css('height', window.innerHeight + 'px');

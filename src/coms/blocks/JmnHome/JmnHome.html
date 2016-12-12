@@ -1,0 +1,141 @@
+<script src="./JmnHome.js"></script>
+
+<template>
+    <div id='JmnHome'>
+        <full-screen img-url='//apps.xmgc360.com/6256/a6ru2e4h2f1m/src/jmn-background-1.jpg' bg-color='#013d83' img-alpha='0.66'>
+            <div class="main">
+                <div class='toplocator'></div>
+                <div class='tc sec'>
+                    <h1 class='tc' style='font-size:40px'>我们IT人的新生大学</h1>
+                    <div class="rel" style="font-size:0">
+                        <img class='qcode' src="//apps.xmgc360.com/6256/a6ru2e4h2f1m/src/jmnkt_wx.png">
+                        <div class="qmaskout full" style="overflow:visible">
+                            <div class="qmaskin full ct">
+                                <a v-bind:href='conf.urls.jmnkt_tx'>
+                                    <div class="qmaskbg"></div>
+                                    <el-button type='danger' class='qbtn'>立即开始学习</el-button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <p>微信公众号二维码</p>
+                    <p style="margin-top:24px">「杰米诺课堂」是一个基于IT技术的学习分享社区。
+                        <br>在这里，你可以自由学习你想学习的技术
+                        <br>通过项目实战完成工程师的华丽蜕变。
+                        <br>在这里，你可以探索更多更有趣的前沿技术，结交志同道合的人。
+                        <br>在这里，不再半途而废，为每天成长的自己感到骄傲。
+                    </p>
+                    <div style="margin-top:32px"></div>
+                </div>
+            </div>
+        </full-screen>
+    </div>
+</template>
+
+<style scoped>
+    /*    整个页面容器*/
+
+    .main {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+    }
+    /*    顶部导航栏占位符*/
+
+    .toplocator {
+        height: 60px;
+        flex-shrink: 0;
+        flex-grow: initial;
+    }
+    /*    主题内容部分*/
+
+    .sec {
+        width: 100%;
+        color: white;
+        overflow-y: scroll;
+        display: flex;
+        flex-direction: column;
+        padding-top: 40px
+    }
+    /*    以下常用样式*/
+
+    .tc {
+        text-align: center
+    }
+
+    .full {
+        width: 100%;
+        height: 100%;
+    }
+
+    .abs {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .rel {
+        position: relative;
+        top: 0;
+        left: 0;
+    }
+
+    .hand {
+        cursor: pointer
+    }
+    /*    以下二维码区域定位*/
+
+    .qcodebox {
+        cursor: pointer;
+    }
+
+    .qcode {
+        max-width: 18%;
+        min-width: 200px;
+    }
+
+    .qmaskbg {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: #1c758a;
+        opacity: 0.66;
+    }
+
+    .qbtn {
+        position: absolute;
+        width: 120px;
+        height: 36px;
+        left: 50%;
+        margin-left: -60px;
+        top: 50%;
+        margin-top: -18px;
+    }
+
+    .qmaskout {
+        max-width: 18%;
+        min-width: 200px;
+        height: 100%;
+        display: inline-block;
+        position: absolute;
+        left: 50%;
+        opacity: 1;
+        overflow: visible
+    }
+
+    .qmaskin:hover {
+        opacity: 1;
+    }
+
+    .qmaskin {
+        height: 100%;
+        display: inline-block;
+        position: absolute;
+        left: 50%;
+        opacity: 0;
+        margin-left: -100%
+    }
+
+</style>

@@ -26,6 +26,8 @@ com.data = function data() {
 
 com.mounted = function () {
     jo = $(this.$el);
+    getMyInfo();
+
 
     this.$store.registerModule('blocks_TopBar', {
         state: vc.$data,
@@ -35,17 +37,12 @@ com.mounted = function () {
             }
         },
         mutations: {
-            aa: state => {
-                console.log('mutations!')
+            test: state => {
+                console.log('>>>mutation:topbar get a mutation!')
             }
         },
     });
-    console.log('>>>state', this.$store.state.blocks_TopBar);
-    console.log('>>>getter', this.$store.getters.getMyProfile);
-    console.log('>>>mutations', this.$store.commit('aa'));
-    getMyInfo();
 };
-
 
 
 com.methods = {};

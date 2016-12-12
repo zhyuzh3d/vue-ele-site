@@ -37,47 +37,40 @@ const store = new Vuex.Store({
     mutations: {},
 });
 
-
-import xrouter from './plugins/xrouter.js'
-Vue.use(xrouter,xglobal);
-
-
-
 //创建顶级路由对象
-//App = require('./coms/blocks/Temp/Temp.html');
-//import JmnHome from './coms/blocks/JmnHome/JmnHome.html';
-//import Temp from './coms/blocks/Temp/Temp.html';
+App = require('./coms/blocks/Temp/Temp.html');
+import JmnHome from './coms/blocks/JmnHome/JmnHome.html';
 
-var router = new VueRouter({});
 
-/*
+var router = new VueRouter({
+    routes: [{
+        path: '/App',
+        component: JmnHome,
+        children: [],
+    }]
+});
+
+//添加children快捷方式
+router.coms = {
+    app: router.options.routes[0]
+};
+
 router.beforeEach((to, from, next) => {
     console.log('>>>>xxxxx', to.path);
     next();
 })
-*/
 
-Vue.conf = conf;
 
 //初始化
-window.app = new Vue({
-    el: '#app', //挂载点
+var app = new Vue({
+    el: '#app',
     store, //将$store属性注入到所有组件
     router, //将router注入到所有组件
-    conf,
     render: function (h) {
         return h(App);
     }
-});
+}).$mount('#Temp');
 
-router = new VueRouter({
-    routes: [{
-        path: '/blocks_JmnHome',
-        component: JmnHome,
-    }]
-});
 
-//router.options.routes.push();
-
-router.push('/blocks_JmnHome');
-console.log('>>', router);
+//启动子站点首页
+router.push('/App');
