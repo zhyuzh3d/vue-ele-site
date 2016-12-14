@@ -14,7 +14,7 @@ com.components = {
 com.data = function data() {
     vc = this;
     return {
-        conf: this.$store.state.conf,
+        conf: this.$xglobal.conf,
     };
 };
 
@@ -22,7 +22,14 @@ com.beforeCreate = function () {};
 
 com.mounted = function () {
     jo = $(this.$el);
-    this.$store.registerModule('pages_jmnkt', {
-        state: vc.$data
+
+    //激活顶部导航栏菜单
+    vc.$xrouter.xset('NavBar', {
+        activeMenu: 'jmn'
+    });
+
+    //导航栏不使用背景
+    vc.$xrouter.xset('App', {
+        barBg: 'inherit',
     });
 };

@@ -1,20 +1,27 @@
-<script src="./Jmnkt.js"></script>
+<script src="./App.js"></script>
 
 <template>
-    <div id='Jmnkt'>
-<!--        <router-link to="/App/home">Go home</router-link>-->
-        <router-view></router-view>
-        <div class='topbarbox'>
-<!--            <top-bar bg-color='inherit'></top-bar>-->
-<!--            <top-bar></top-bar>-->
-            <temp></temp>
-            <temp></temp>
-            <component :is="curcom"></component>
-        </div>
+    <div id='App' xid='App'>
+        <nav-bar id='NavBar' xid='NavBar' v-bind:bg-color='barBg' style='position:absolute;z-index:1'></nav-bar>
+        <component id='App_mainView' :is="mainView" xid='App_mainView' style='position:absolute;z-index:0' v-bind:class='(barBg!="inherit")?"padbar":""'></component>
     </div>
 </template>
 
 <style scoped>
+    .padbar {
+        margin-top: 60px;
+    }
+
+    #NavBar{
+        position: absolute;
+        z-index: 1
+    }
+
+    #App_mainView {
+        position: absolute;
+        z-index: 0
+    }
+
     .main {
         display: flex;
         flex-direction: column;

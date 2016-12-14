@@ -1,83 +1,51 @@
-import $ from 'jquery'
+//主战入口文件，将自动载入子站并完成vue和插件的初始化
+import $ from 'jquery';
+import Vue from 'vue';
 
-import Vue from 'vue'
-import Vuex from 'vuex'
-import VueRouter from 'vue-router'
-import '../theme/index.css'
-import './_main.css'
-import ElementUI from 'element-ui'
-
-import conf from './_conf.js' //全局设置
-
-Vue.use(Vuex);
-Vue.use(VueRouter);
+//elements ui主题库
+import '../theme/index.css';
+import './_main.css'; //自定义样式
+import ElementUI from 'element-ui';
 Vue.use(ElementUI);
 
-//根据子域名动态加载不同子站
+//xglobal全局插件及载入设置
+import conf from './xglobal/conf.js';
+import fns from './xglobal/fns.js';
+import xglobal from './plugins/xglobal.js';
+Vue.use(xglobal, {
+    xglobal: {
+        //将通过beforCreate附着到组件的this，任意字段
+        conf: conf,
+        fns: fns,
+    },
+    xcomponent: {
+        //将附着到每个组件，可以使用data，methods等字段
+    },
+});
+
+//xrouter路由插件
+import xrouter from './plugins/xrouter.js';
+Vue.use(xrouter);
+
+//根据子域名动态加载不同子站，只能require括号内只能string不能变量
 var App;
 switch (window.location.host) {
     case 'www.xmgc360.com':
-        App = require('./coms/pages/Www/Www.html');
+        App = require('./coms/pages/App/App.html');
         break;
     case 'jmnkt.xmgc360.com':
-        App = require('./coms/pages/Jmnkt/Jmnkt.html');
+        App = require('./coms/pages/App/App.html');
         break;
     default:
-        App = require('./coms/pages/Www/Www.html');
+        App = require('./coms/pages/App/App.html');
         break;
 };
 
-//vuex组件之间共享
-const store = new Vuex.Store({
-    state: {
-        msg: 'I am the _main.js store!',
-        conf: conf,
-    },
-    modules: {},
-    mutations: {},
-});
 
-
-import xrouter from './plugins/xrouter.js'
-Vue.use(xrouter,xglobal);
-
-
-
-//创建顶级路由对象
-//App = require('./coms/blocks/Temp/Temp.html');
-//import JmnHome from './coms/blocks/JmnHome/JmnHome.html';
-//import Temp from './coms/blocks/Temp/Temp.html';
-
-var router = new VueRouter({});
-
-/*
-router.beforeEach((to, from, next) => {
-    console.log('>>>>xxxxx', to.path);
-    next();
-})
-*/
-
-Vue.conf = conf;
-
-//初始化
-window.app = new Vue({
-    el: '#app', //挂载点
-    store, //将$store属性注入到所有组件
-    router, //将router注入到所有组件
-    conf,
+//初始化vue
+var app = new Vue({
+    el: '#App', //挂载点
     render: function (h) {
         return h(App);
     }
 });
-
-router = new VueRouter({
-    routes: [{
-        path: '/blocks_JmnHome',
-        component: JmnHome,
-    }]
-});
-
-//router.options.routes.push();
-
-router.push('/blocks_JmnHome');
-console.log('>>', router);
