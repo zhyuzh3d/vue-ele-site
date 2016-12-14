@@ -5,13 +5,15 @@
 
 基于vuejs创建，http://cn.vuejs.org/ 
 
-基于element-ui创建，http://element.eleme.io/
+基于element-ui创建，http://element.eleme.io/ 
+
+附带我编写的两个插件xouter(穿越路由)和xglobal(穿越全局)
 
 ##功能描述
 好的前端框架应该是怎么样的？**模版化且足够灵活**，我的看法具体是： 
 
 1. **实现真正的模块化网站构建，最大限度的重复利用UI组件**
-1. **页面组件从大到小分为四级：页面Page，Block区块，symbol元件，单元unit**
+1. **页面组件从大到小分为四级：页面Page，Block区块，symbol元件，细胞cell**
 1. **可以自由的切换组件内部包含的模版，借此实现路由功能**
 1. **每个组件可以自动恢复到上一次离开时候的状态，保持用户体验的连续性**
 1. **统一的参数设定和通用的自定义函数可以穿越所有组件被使用**
@@ -42,33 +44,35 @@
 1. **Page页面，覆盖全部屏幕范围，顶部导航栏可以浮在它的上面。页面仅用于实现多个blocks的布局而不提供实质性的功能内容。**
 1. **Blocks区块，覆盖部分屏幕范围，实现一组功能如成员卡片列表，留言列表或显示整个文章标题和内容等，功能上自成体系**
 1. **Symbol元件，组成blocks的部件单元，比如一个成员卡片，一条留言或文章的标题导航等，一般不能单独实现功能**
-1. **Units单元，最小UI单元，比如element提供的按钮button，开关switch等，不可再分割。unit和symbol并没有明显界限，简单理解就是unit组成symbol而不能相反。** 
+1. **cells细胞，最小UI单元，比如element提供的按钮button，开关switch等，不可再分割。cell和symbol并没有明显界限，简单理解就是cell组成symbol而不能相反。** 
 
 这些组件都应该遵守vue自定义组件的开发和使用规则；每个组件应该都对应同名（大写首字母）文件夹及文件夹下面的同名html和js文件。[Vuejs快速入门点这里](http://cn.vuejs.org/v2/guide/index.html#Vue-js-是什么)
 
 ##xrouter穿越路由
 源码文件在src/plugins/xrouter.js，总共不到200行代码，还包括了大量的注释。强烈推荐你认真看一下，顺便给些指正。 
 
-**它的设计初衷是实现完全自由的路由管理和组件状态自动化恢复的功能 ** 
+**它的设计初衷是实现完全自由的路由管理和组件状态自动化恢复** 
 
 它的设计思路是这样的，父层组件(必须具有xid属性，比如&lt;div xid='App'&gt;&lt;/div&gt;)通过$data.mainView来切换子组件（比如 &lt;component :is='mainView'&gt;这样的模版);  
 
 xrouter插件实现穿越所有组件的路由函数 **$xrouter.go('App',{mainView:'comName'})**，每次跳转都会同步地址栏的hash变化（模拟锚点跳转），并且将这些变化存储到localstorage； 
 
-xrouter插件还为每个组件实现了加载mounted时自动运行的**$xrouter.restore(xid)**函数，自动从localstorage中恢复用户上次访问之前的状态；（在我的[示例站点](http://temp.xmgc360.com/)中你如果点击顶部切换到了【视频课】，那么下次再访问这个站点时候会自动为您restore恢复为【视频课】页面）
+xrouter插件还为每个组件实现了加载mounted时自动运行的 **$xrouter.restore(xid)** 函数，自动从localstorage中恢复用户上次访问之前的状态；（在我的  [示例站点](http://temp.xmgc360.com/) 中你如果点击顶部切换到了【视频课】，那么下次再访问这个站点时候会自动为您restore恢复为【视频课】页面）
 
-xrouter的核心方法【穿越设定】是**$xrouter.xset('App',{mainView:'comName'})**方法(这个代码和上面go方法代码效果一样，只是不会同步地址栏hash)，go是调用xset实现跳转的，xset也可以用于任何需要控制其他组件的情况（项目里面的coms/pages文件夹下面的...Home都使用这个方法来切换顶部导航栏NavBar的activeMenu当前活动菜单以及App的barBg导航栏是否透明）
+xrouter的核心方法【穿越设定】是 **$xrouter.xset('App',{mainView:'comName'})** 方法(这个代码和上面go方法代码效果一样，只是不会同步地址栏hash)，go是调用xset实现跳转的，xset也可以用于任何需要控制其他组件的情况（项目里面的coms/pages文件夹下面的...Home都使用这个方法来切换顶部导航栏NavBar的activeMenu当前活动菜单以及App的barBg导航栏是否透明）
 
-xrouter还提供了一个用于测试当前哪些父层元素可以用于路由的函数**$xrouter.showComs()**;因为你要进行路由跳转时候必须先关注它的父层组件是否已经真的挂载完毕
+xrouter还提供了一个用于测试当前哪些父层元素可以用于路由的函数 **$xrouter.showComs()** ;因为你要进行路由跳转时候必须先关注它的父层组件是否已经真的挂载完毕
 
 xrouter需要引用xrouter.js文件并Vue.use(xrouter)使用它，请参照_main.js.
 
 ##xglobal穿越全局
-怎么让所有组件都能共享一个设置文件呢？怎样把自定义函数传送到每个组件之中呢？也许这种想法不符合规范的编程设计理念，但是，它们真的太好用了！ 
+**怎么让所有组件都能共享一个设置文件呢？怎样把自定义函数传送到每个组件之中呢？**
+
+也许这种想法不符合规范的编程设计理念，但是，它们真的太好用了！ 
 
 xglobal可以让你向每个组件注入一个$xglobal 对象，你可以在这个对象上放置任何需要的东西，config，functions都可以；如果你需要在模版html中使用，那么只需要把它们添加到$data里面，比如 **conf:this.$xglobal.conf**.
 
-xglobal需要引用xglobal.js文件并且**Vue.use(xglobal,{conf:myConfigObj,fns:myFunctionsObj})**使用它，请参照_main.js.
+xglobal需要引用xglobal.js文件并且 **Vue.use(xglobal,{conf:myConfigObj,fns:myFunctionsObj})** 使用它，请参照_main.js.
 
 ##远程实时测试
 这个项目框架并不能自动提供web文件访问服务，推荐你使用nginx来做，大多数情况这都比Nodejs写文件服务更好。 
@@ -106,7 +110,7 @@ webpack打包(npm run build)的入口文件，webpack是从这个文件开始打
 ####src/assets文件夹
 素材图片文件夹
 ####src/coms文件夹
-全站所有的UI组件（components）都在这里，被分为pages，block，symbol，unit四个级别。你可以直接编辑这些文件夹内的文件，或仿制新的组件。
+全站所有的UI组件（components）都在这里，被分为pages，block，symbol，cell四个级别。你可以直接编辑这些文件夹内的文件，或仿制新的组件。
 ####plugins文件夹
 自己编写的vue的插件放在这里，已经放入了我自己编写的xglobal（穿越全局）和xrouter（穿越路由）两个插件，它们在整个站点中起到了重要作用。
 ####theme文件夹
@@ -120,7 +124,7 @@ vue-router需要把所有的路由都规划好，提前写在配置文件中；�
 ####为什么没有使用vuex？
 首先，vuex是个好东西，否则我也不会把自己的插件叫做xglobal，xrouter了。 
 
-没有用vuex是个偶然，最初xglobal是要做路由的（现在xglobal也提供了支援子对象init()函数初始化），后来发觉xrouter应该单独拉出来，接下来发觉傻傻的xglobal已经够用了，虽然vue更强大更严谨，但似乎并不是必须，然后，就拿掉了。希望你能喜欢xglobal这样的傻大粗型的设定，也希望多多指正.
+没有用vuex是个偶然，最初xglobal是要做路由的（现在xglobal也提供了支援子对象init()函数初始化），后来发觉xrouter应该单独拉出来，接下来发觉傻傻的xglobal已经够用了，虽然vue更强大更严谨，但似乎并不是必须，然后，就拿掉了。希望你能喜欢xglobal这样的傻大粗设定，也希望多多指正.
 
 
 我们的QQ群（10knet）571956473，欢迎任何喜欢web全栈开发的朋友一起交流。
